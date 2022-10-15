@@ -1,5 +1,5 @@
 export default class Team {
-  constructor() {
+  Constructor() {
     this.members = new Set();
   }
 
