@@ -4,8 +4,8 @@ export default class Team {
   }
 
   add(character) {
-    if (this.members.has(character)){
-      throw new Error('This character was already added'); 
+    if (this.members.has(character)) {
+      throw new Error('This character was already added');
     }
     this.members.add(character);
   }
@@ -14,13 +14,7 @@ export default class Team {
     this.members = new Set([...this.members, ...characters]);
   }
 
-  toArray(){
+  toArray() {
     return [...this.members];
-  }
-}
-
-export class Character {
-  constructor(name) {
-    this.name = name;
   }
 }

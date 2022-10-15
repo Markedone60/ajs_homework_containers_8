@@ -1,12 +1,12 @@
 import Team from '../app';
-import Character from '../app'
+import Character from '../character';
 
 test('testing add method functionality', () => {
-  const team = new Team;
+  const team = new Team();
   const char = new Character('King');
 
   team.members.add(char);
-  expect(team.toArray()).toEqual([char])
+  expect(team.toArray()).toEqual([char]);
 });
 
 test('testing addition of several characters', () => {
