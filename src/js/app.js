@@ -1,20 +1,35 @@
 export default class Team {
-  Constructor() {
+  constructor() {
     this.members = new Set();
   }
 
   add(character) {
     if (this.members.has(character)) {
-      throw new Error('This character was already added');
+      throw new Error('Charachter was already added');
+    } else {
+      this.members.add(character);
+      return this.members;
     }
-    this.members.add(character);
   }
 
-  addAll(characters) {
-    this.members = new Set([...this.members, ...characters]);
+  addAll(...characters) {
+    characters.forEach((character) => {
+      if (!this.members.has(character)) {
+        this.members.add(character);
+      }
+      return this.members;
+    });
   }
 
   toArray() {
-    return [...this.members];
+    const newArr = [];
+    this.members.forEach((member) => newArr.push(member));
+    return newArr;
+  }
+}
+
+export class Character {
+  constructor(name) {
+    this.name = name;
   }
 }

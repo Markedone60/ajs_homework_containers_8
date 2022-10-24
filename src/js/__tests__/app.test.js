@@ -1,30 +1,40 @@
-import Team from '../app';
-import Character from '../character';
+import Team, {
+  Character,
+} from '../app';
 
-test('testing add method functionality', () => {
+test('Testing functionality of adding 1 character', () => {
   const team = new Team();
-  const char = new Character('King');
+  const hero = new Character('Hero');
+  team.add(hero);
 
-  team.members.add(char);
-  expect(team.toArray()).toEqual([char]);
+  expect(team.toArray()).toEqual([{
+    name: 'Hero',
+  }]);
 });
 
-test('testing addition of several characters', () => {
+test('Adding similar character repeatedly', () => {
   const team = new Team();
-  const char1 = new Character('Tank');
-  const char2 = new Character('Cleric');
+  const hero = new Character('Hero');
+  team.add(hero);
+  const addHero = () => {
+    team.add(hero);
+    team.add(hero);
+  };
 
-  team.addAll([char1, char2]);
-
-  expect(team.members.size).toBe(2);
+  expect(addHero).toThrow('Charachter was already added');
 });
 
-test('checking toArray', () => {
+test('Adding several characters', () => {
   const team = new Team();
-  const char1 = new Character('Tank');
-  const char2 = new Character('Cleric');
+  const hero1 = new Character('Hero');
+  const hero2 = new Character('Heeero');
+  team.addAll(hero1, hero2);
 
-  team.addAll([char1, char2]);
-
-  expect(team.toArray()).toEqual([char1, char2]);
+  expect(team.toArray()).toEqual(
+    [{
+      name: 'Hero',
+    }, {
+      name: 'Heeero',
+    }],
+  );
 });
