@@ -27,9 +27,3 @@ export default class Team {
     return newArr;
   }
 }
-
-export class Character {
-  constructor(name) {
-    this.name = name;
-  }
-}

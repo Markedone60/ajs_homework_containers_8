@@ -1,6 +1,5 @@
-import Team, {
-  Character,
-} from '../app';
+import Team from '../app';
+import Character from '../character';
 
 test('Testing functionality of adding 1 character', () => {
   const team = new Team();
